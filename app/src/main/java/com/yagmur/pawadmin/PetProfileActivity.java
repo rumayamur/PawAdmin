@@ -1,5 +1,6 @@
 package com.yagmur.pawadmin;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -59,8 +60,8 @@ public class PetProfileActivity extends AppCompatActivity {
         indicator.setViewPager(viewpager);
     }
 
-    //TODO: like butonu çalışmıyor. Localde favorilere alınan köpeklerin listesi tutulmalı böylece kontrol etmesi daha kolay bir hale gelir. SQLite kullanabiliriz bunun için.
-    public void LikeFabClick(View view) {
-        likeButton.setBackground(getResources().getDrawable(R.drawable.christmas_star_filled));
+    public void EditFabOnClick(View view){
+        Intent intent = new Intent(this, PetProfileAddActivity.class);
+        startActivity(intent);
     }
 }

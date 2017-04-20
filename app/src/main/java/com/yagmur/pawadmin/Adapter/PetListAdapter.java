@@ -7,13 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yagmur.pawadmin.Model.Dog;
 import com.yagmur.pawadmin.PetProfileActivity;
+import com.yagmur.pawadmin.R;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class PetListAdapter extends RecyclerView.Adapter<PetListAdapter.MyViewHolder> {
@@ -23,10 +27,12 @@ public class PetListAdapter extends RecyclerView.Adapter<PetListAdapter.MyViewHo
         TextView petID;
         Context context;
         ImageButton likeButton;
+        CircleImageView petAvatar;
 
         MyViewHolder(View itemView, Context c) {
             super(itemView);
             context = c;
+            petAvatar = (CircleImageView) itemView.findViewById(R.id.petAvatar);
             petID = (TextView) itemView.findViewById(R.id.petId);
             likeButton = (ImageButton) itemView.findViewById(R.id.petLikeButton);
             itemView.setOnClickListener(this);
@@ -62,6 +68,7 @@ public class PetListAdapter extends RecyclerView.Adapter<PetListAdapter.MyViewHo
     public void onBindViewHolder(PetListAdapter.MyViewHolder holder, int position) {
         Dog dog = dogList.get(position);
         holder.petID.setText(dog.getDogID());
+        holder.petAvatar.setImageBitmap(dog.getBitmap());
     }
 
     @Override

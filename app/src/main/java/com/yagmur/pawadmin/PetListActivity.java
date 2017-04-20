@@ -1,14 +1,18 @@
 package com.yagmur.pawadmin;
 
+import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.yagmur.pawadmin.Adapter.PetListAdapter;
 import com.yagmur.pawadmin.Model.Dog;
@@ -75,42 +79,44 @@ public class PetListActivity extends BaseActivity {
     }
 
     private void prepareDogData() {
-        dog = new Dog("1000", 2);
+        dog = new Dog("1000", 2, BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.image));
         dogList.add(dog);
 
-        dog = new Dog("1002", 1);
+        dog = new Dog("1002", 1, BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.image2));
         dogList.add(dog);
 
-        dog = new Dog("1003", 4);
+        dog = new Dog("1003", 4, BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.image3));
         dogList.add(dog);
 
-        dog = new Dog("1004", 6);
+        dog = new Dog("1004", 6, BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.image));
         dogList.add(dog);
+
+        int id = 1005;
+        for (int i = 0; i <= 10; i++) {
+            String idS = String.valueOf(id);
+            dog = new Dog(idS, 6);
+            dogList.add(dog);
+            id++;
+        }
 
         myAdapter.notifyDataSetChanged();
     }
 
-//    Toolbar menu click kontrol:
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_add:
+                Intent intent = new Intent(this, PetProfileAddActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected int getMainLayoutID() {
-        return R.layout.petlist_activity_base;
+        return R.layout.petlist_activity;
     }
 
     @Override
@@ -120,11 +126,7 @@ public class PetListActivity extends BaseActivity {
 
     @Override
     protected int getMenuLayoutID() {
-        return 0;
+        return R.menu.petlist_menu;
     }
 
-    @Override
-    protected boolean isNavigationDrawerEnabled() {
-        return true;
-    }
 }
