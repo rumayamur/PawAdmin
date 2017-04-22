@@ -6,15 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.yagmur.paw.R;
+import com.yagmur.pawadmin.R;
 
 public class ViewPagerAdapter extends PagerAdapter {
 
     Context context;
     private int[] Images = new int[]{
             R.drawable.image,
-            R.drawable.third,
-            R.drawable.sixth
+            R.drawable.image2,
+            R.drawable.image3
     };
 
     public ViewPagerAdapter(Context context) {

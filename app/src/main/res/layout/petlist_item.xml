@@ -1,41 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="72dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
     android:background="@android:color/white"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/petAvatar"
-        android:layout_width="@dimen/avatar"
-        android:layout_height="@dimen/avatar"
-        android:layout_gravity="center_vertical"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:src="@drawable/dog"
-        android:layout_margin="@dimen/avatar_margin"
-        android:contentDescription="@string/app_name" />
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="2dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/petId"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:text="Dog ID" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/petId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dog ID"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/petAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 years old." />
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/petLikeButton"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:contentDescription="@string/app_name"
             android:padding="24dp"
-            android:src="@drawable/like" />
+            android:src="@drawable/ic_info_outline_white_24dp"
+            android:tint="@color/componentColor" />
     </RelativeLayout>
 </LinearLayout>
